@@ -1,6 +1,5 @@
 // API key from OpenWeather
 const apiKey = "Y2b5ff1a3850dba5620b735e5d5710108";
-const inputVal = input.value;
 
 const form = document.querySelector(".top-banner form");
  
