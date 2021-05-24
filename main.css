@@ -2,40 +2,38 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-weight: normal;
   }
-
+   
+  button {
+    cursor: pointer;
+  }
+    
+  input {
+    -webkit-appearance: none;
+  }
+    
+  button,
+  input {
+    border: none;
+    background: none;
+    outline: none;
+    color: inherit;
+  }
+   
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+   
+  ul {
+    list-style: none;
+  }
+   
   body {
-
-    background-image: url(../images/weather_background.jpg);
-    background-size: cover;
-    font-family: 'Lora', serif;
-
-}
-
-  .container {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background: rgb(251, 242, 133);
-    background: radial-gradient;
-  }
-
-  .weatherData {
-    display: flex; 
-    align-items: center;
-    margin: 15px 0;
-    font-size: 1.5rem;
-  }
-
-  #location {
-    font-size: 3rem;
-    font-weight: 800;
-    font-style: italic;
-  }
-  .desc {
-    font-size: 1.25rem;
-    text-transform: capitalize;
+    font: 1rem/1.3 "Roboto", sans-serif;
+    background: var(--bg_main);
+    color: var(--text_dark);
+    padding: 50px;
   }
