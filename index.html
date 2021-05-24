@@ -10,29 +10,27 @@
 </head>
 <body>
 
-    <div class="container">
-        <img src="../..weather_background.jpg" alt="weather_background">
-        <div id="location">Unable to Fetch Weather Data</div>
-        <div class="desc">No Information Available.</div>
-        <div class="weather">
-            <div class="c">Celcius</div>
-            <div class="f">Farenheight</div>
-        </div>
-    </div>
-
-        <!--using the DOM to handle user input-->
-        <form name="weatherData" id="weatherDataForm">
+    <form name="weatherData" id="weatherDataForm">
 
             <input type="text" placeholder="City" name="city" id="city">
             <input type="text" placeholder="Zip Code" name="zip" id="zip">
             <button type="submit" id='submitButton'>Search</button>
 
         </form>
-        <!-- start of main container -->
+    
+    <div class="container">
+        <img src="" alt="" srcset="" id="weather-icon">
+        <div id="location">Unable to Fetch Weather Data</div>
+        <div class="desc">No Information Available</div>
+        <div class="weather">
+            <div class="c">Error</div>
+            <div class="f">Error</div>
+    </div>
+
         <h1 id='cityName'></h1>
         <table class='high'> 
             <tr>
-                <th>Temperature High</th>
+                <th>Temperature High Of</th>
             </tr>
             <tr>
                <td id='high'> </td>
@@ -40,7 +38,7 @@
         </table>
         <table class='low'> 
             <tr>
-                <th>Temperature Low </th>
+                <th>Temperature Low Of</th>
             </tr>
             <tr>
                <td id='low'> </td>
