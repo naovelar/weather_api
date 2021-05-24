@@ -23,7 +23,7 @@
     background: radial-gradient;
   }
 
-  .weather {
+  .weatherData {
     display: flex; 
     align-items: center;
     margin: 15px 0;
