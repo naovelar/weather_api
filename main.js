@@ -1,52 +1,62 @@
-// API key from OpenWeather
-const apiKey = "Y2b5ff1a3850dba5620b735e5d5710108";
+let form = document.querySelector('#weatherDataForm')
+const app_id='Y2b5ff1a3850dba5620b735e5d5710108'
+let query_city;
+let query_zip;
+let hide=true;
 
-const form = document.querySelector(".top-banner form");
- 
-form.addEventListener("submit", e => {
-  e.preventDefault();
-  const inputVal = input.value;
-});
 
-const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=${apiKey}&units=metric`;
+const weatherData = async () => {
+    let response;
 
-fetch(url)
-  .then(response => response.json())
-  .then(data => {
-    // do stuff with the data
-  })
-  .catch(() => {
-    msg.textContent = "Please search for a valid city";
-  });
+    response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${query_zip}&units=imperial&appid=${app_id}`)
+    console.log(response.data)
+    document.getElementById('cityName').innerHTML=''
+    document.getElementById('cityName').innerHTML=query_city
 
-  const listItems = list.querySelectorAll(".ajax-section .city");
-const listItemsArray = Array.from(listItems);
- 
-if (listItemsArray.length > 0) {
-  const filteredArray = listItemsArray.filter(el => {
-    let content = "";
+    let max=response.data.main.temp_max + '\u00B0 F';
+    document.getElementsByTagName("table")[0].style.border="thin solid white";
+    document.getElementsByTagName("table")[0].style.color='white'
+    document.getElementById('high header').innerHTML='High'
+    document.getElementById('high').innerHTML=''
+    document.getElementById('high').append(max)
 
-    if (inputVal.includes(",")) {
+    let min=response.data.main.temp_min + '\u00B0 F';
+    document.getElementsByTagName("table")[1].style.border="thin solid white";
+    document.getElementsByTagName("table")[1].style.color='white'
+    document.getElementById('low header').innerHTML='Low'
+    document.getElementById('low').innerHTML=''
+    document.getElementById('low').append(min)
+
+    let forecast=response.data.weather[0]['main']
+    document.getElementsByTagName("table")[2].style.border="thin solid white";
+    document.getElementsByTagName("table")[2].style.color='white'
+    document.getElementById('forecast header').innerHTML='Forecast'
+    document.getElementById('forecast').innerHTML=''
+    document.getElementById('forecast').append(forecast)
+
+    let humidity=response.data.main.humidity + '%';
+    document.getElementsByTagName("table")[3].style.border="thin solid white";
+    document.getElementsByTagName("table")[3].style.color='white'
+    document.getElementById('humidity header').innerHTML='Humidity'
+    document.getElementById('humidity').innerHTML=''
+    document.getElementById('humidity').append(humidity)
     
-      if (inputVal.split(",")[1].length > 2) {
-        inputVal = inputVal.split(",")[0];
-        content = el.querySelector(".city-name span").textContent.toLowerCase();
-      } else {
-        content = el.querySelector(".city-name").dataset.name.toLowerCase();
-      }
-    } else {
+};
 
-      content = el.querySelector(".city-name span").textContent.toLowerCase();
+const capCity = (cityString) => {
+    let parts=cityString.split(' ')
+    for (let i = 0; i < parts.length; i++) {
+        parts[i] = parts[i][0].toUpperCase() + parts[i].slice(1).toLowerCase();
+        console.log(parts[i])
     }
-    return content == inputVal.toLowerCase();
-  });
-   
-  if (filteredArray.length > 0) {
-    msg.textContent = `You already know the weather for ${
-      filteredArray[0].querySelector(".city-name span").textContent
-    } ...otherwise be more specific by providing the country code as well`;
-    form.reset();
-    input.focus();
-    return;
-  }
+    return parts.join(' ')
 }
+
+
+form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      query_city = document.querySelector('#city').value;
+      query_city=capCity(query_city);
+      query_zip = document.querySelector('#zip').value;
+      let result=weatherData();
+})
