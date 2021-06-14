@@ -2,29 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/main.css" />
-    <script src="javascript/main.js"></script>
-    <title>Weather API</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js" defer></script>
+    <title>Weather Data Project</title>
 </head>
-
 <body>
-    <section class="top-banner">
-        <div class="container">
-          <h1 class="heading">Weather API</h1>
-          <form>
-            <input type="text" placeholder="Search for a city" autofocus>
-            <button type="submit">SUBMIT</button>
-            <span class="msg"></span>
-          </form>
-        </div>
-      </section>
-      <section class="ajax-section">
-        <div class="container">
-          <ul class="cities"></ul>
-        </div>
-      </section>
-</body>
+    <div class="container">
 
+        <!--using the DOM to handle user input-->
+
+        <form name="weatherData" id="weatherDataForm">
+
+            <input type="text" placeholder="City" name="city" id="city">
+            <input type="text" placeholder="Zip Code" name="zip" id="zip">
+            <button type="submit" id='submitButton'>What is the weather like today?</button>
+
+        </form>
+        <h1 id='cityName' ></h1>
+        <table class='high' > 
+            <tr>
+                <th id='high header'></th>
+            </tr>
+            <tr>
+               <td id='high'> </td>
+            </tr>
+        </table>
+        <table class='low'> 
+            <tr>
+                <th id='low header'></th>
+            </tr>
+            <tr>
+               <td id='low'> </td>
+            </tr>
+        </table>
+        <table class='forecast'> 
+            <tr>
+                <th id='forecast header'></th>
+            </tr>
+            <tr>
+               <td id='forecast'> </td>
+            </tr>
+        </table>
+        <table class='humidity'> 
+            <tr>
+                <th id='humidity header'></th>
+            </tr>
+            <tr>
+               <td id='humidity'> </td>
+            </tr>
+        </table>
+
+    </div>
+    
+
+</body>
 </html>
